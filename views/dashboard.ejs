@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <header>
+      <h1>Welcome to your Dashboard</h1>
+      <a href="/logout" class="btn btn-logout">Logout</a>
+    </header>
+    
+    <div class="user-info">
+      <h2>User Information</h2>
+      <div class="user-card">
+        <div class="user-profile">
+          <div class="avatar">
+            <%= user.name.charAt(0).toUpperCase() %>
+          </div>
+          <div class="user-details">
+            <h3><%= user.name %></h3>
+            <p><%= user.email %></p>
+            <p>Member since: <%= user.date.toLocaleDateString() %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="dashboard-content">
+      <div class="dashboard-stats">
+        <div class="stat-card">
+          <h3>Activity</h3>
+          <p class="stat-number">0</p>
+          <p>Recent activities</p>
+        </div>
+        <div class="stat-card">
+          <h3>Messages</h3>
+          <p class="stat-number">0</p>
+          <p>Unread messages</p>
+        </div>
+        <div class="stat-card">
+          <h3>Tasks</h3>
+          <p class="stat-number">0</p>
+          <p>Pending tasks</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simple interactive elements for dashboard
+    document.addEventListener('DOMContentLoaded', function() {
+      const statCards = document.querySelectorAll('.stat-card');
+      
+      statCards.forEach(card => {
+        card.addEventListener('click', function() {
+          this.classList.toggle('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
